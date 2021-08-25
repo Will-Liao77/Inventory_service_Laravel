@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach (App\Models\Product::where('owner','admin')->get() as $post)
+                        @foreach (App\Models\Product::where('owner', '=', Auth::user()->name)->get() as $post)
                         <td><a href="{{ route('product.edit', [$post->id]) }}">{{ $post->name }}</a></td>
                         <td>{{ $post->price }}</td>
                         <td align="center">{{ $post->amount }}</td>
