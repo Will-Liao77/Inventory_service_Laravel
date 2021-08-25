@@ -4,21 +4,28 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2>Simple table</h2>
-            <table  style="border:3px #cccccc solid;" cellpadding="10" border='10'>
-            <tr>
-                <td>Hi, I'm your first cell.</td>
-                <td>I'm your second cell.</td>
-                <td>I'm your third cell.</td>
-                <td>I'm your fourth cell.</td>
-            </tr>
-            <tr>
-                <td>Second row, first cell.</td>
-                <td>Cell 2.</td>
-                <td>Cell 3.</td>
-                <td>Cell 4.</td>
-            </tr>
+            <h2>{{ Auth::user()->name }}'s Product</h2>
+            <table style="border:3px #cccccc solid;" cellpadding="10" border='10' width='800px'>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product name</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach (App\Models\Product::all() as $post)
+                        <td><a href="{{ route('product.edit', [$post->id]) }}">{{ $post->id }}</a></td>
+                        <td>{{ $post->name }}</td>
+                        <td>{{ $post->price }}</td>
+                        <td align="center">{{ $post->amount }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
+            
         </div>
     </div>
 </div>

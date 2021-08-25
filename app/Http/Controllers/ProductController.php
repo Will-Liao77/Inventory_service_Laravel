@@ -47,7 +47,8 @@ class productController extends Controller
         $post->amount = request('amount');
         $post->save();
 
-        return 'Product has been created!';
+        #return 'Product has been created!';
+        return redirect()->to('/');
     }
 
     /**
@@ -67,9 +68,10 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
+        dd($product);
     }
 
     /**
