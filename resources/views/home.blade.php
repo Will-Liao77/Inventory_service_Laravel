@@ -9,7 +9,6 @@
             <table style="border:3px #cccccc solid;" cellpadding="10" border='10' width='800px'>
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Product name</th>
                         <th>Price</th>
                         <th>Amount</th>
@@ -17,9 +16,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach (App\Models\Product::all() as $post)
-                        <td><a href="{{ route('product.edit', [$post->id]) }}">{{ $post->id }}</a></td>
-                        <td>{{ $post->name }}</td>
+                        @foreach (App\Models\Product::where('owner','admin')->get() as $post)
+                        <td><a href="{{ route('product.edit', [$post->id]) }}">{{ $post->name }}</a></td>
                         <td>{{ $post->price }}</td>
                         <td align="center">{{ $post->amount }}</td>
                     </tr>
