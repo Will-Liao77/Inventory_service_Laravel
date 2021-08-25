@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @auth
             <h2>{{ Auth::user()->name }}'s Product</h2>
             <table style="border:3px #cccccc solid;" cellpadding="10" border='10' width='800px'>
                 <thead>
@@ -25,7 +26,7 @@
                     @endforeach
                 </tbody>
             </table>
-            
+            @endauth
         </div>
     </div>
 </div>

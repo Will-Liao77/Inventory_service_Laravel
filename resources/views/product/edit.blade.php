@@ -21,7 +21,7 @@
                     Updated Successfully!
                 </div>
             @endif
-            
+
             <form action="{{ route('product.update', [$product->id]) }}"  method="post">
                 @csrf
                 @method('put')
@@ -42,7 +42,14 @@
                     <label for="amount">Product_amount</label>
                     <input type="text" value="{{ old('amount',$product->amount) }}" class="form-control" id="amount" name="amount">
                 </div>
-                <button type="ADD_to_DB_porduct" class="btn btn-primary">Update</button>
+                <button type="ADD_to_DB_porduct" class="btn btn-success">Update</button>
+            </form>
+
+            <hr>
+            <form action="{{ route('product.destroy', [$product->id]) }}" method='post' onSubmit="return confirm('Are you sure to DELETE this product?')">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger">Delete this product</button>
             </form>
         </div>
     </div>

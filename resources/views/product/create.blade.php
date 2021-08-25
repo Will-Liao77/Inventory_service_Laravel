@@ -15,7 +15,7 @@
                     </ul>
                 </div>
             @endif
-            
+
             <form action="{{ route('product.store') }}"  method="post">
                 @csrf
                 <div class="form-group">
@@ -35,7 +35,7 @@
                     <label for="amount">Product_amount</label>
                     <input type="text" class="form-control" id="amount" name="amount">
                 </div>
-                <button type="ADD_to_DB_porduct" class="btn btn-primary">ADD</button>
+                <button type="ADD_to_DB_porduct" class="btn btn-success">ADD</button>
             </form>
         </div>
     </div>
