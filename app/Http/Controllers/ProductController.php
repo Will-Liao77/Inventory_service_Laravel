@@ -39,13 +39,19 @@ class productController extends Controller
     {
         //
         //dd($request->all());
+        $request->validate([
+            'owner' => 'required',
+            'name' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
+        ]);
         
-        $post = new Product;
-        $post->owner = request('owner');
-        $post->name = request('name');
-        $post->price = request('price');
-        $post->amount = request('amount');
-        $post->save();
+        $product = new Product;
+        $product->owner = request('owner');
+        $product->name = request('name');
+        $product->price = request('price');
+        $product->amount = request('amount');
+        $product->save();
 
         #return 'Product has been created!';
         return redirect()->to('/');
@@ -71,7 +77,8 @@ class productController extends Controller
     public function edit(Product $product)
     {
         //
-        dd($product);
+        //dd($product);
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -81,9 +88,21 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Product $product)
     {
         //
+        $request->validate([
+            'owner' => 'required',
+            'name' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
+        ]);
+        $product->owner = request('owner');
+        $product->name = request('name');
+        $product->price = request('price');
+        $product->amount = request('amount');
+        $product->save();
+        return redirect()->route('product.edit', [$product->id])->with('success',true);
     }
 
     /**

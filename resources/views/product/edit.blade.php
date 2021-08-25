@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h2>Add product</h2>
+            <h2>edit product</h2>
 
             @if ($errors->any())
                 <div class='alert alert-danger'>
@@ -15,9 +15,16 @@
                     </ul>
                 </div>
             @endif
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    Updated Successfully!
+                </div>
+            @endif
             
-            <form action="{{ route('product.store') }}"  method="post">
+            <form action="{{ route('product.update', [$product->id]) }}"  method="post">
                 @csrf
+                @method('put')
                 <div class="form-group">
                     <label for="owner">Owner</label>
                     <input type="text" value="{{ Auth::user()->name }}" class="form-control" id="owner" name="owner" readonly>
@@ -25,17 +32,17 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Product_name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" value="{{ old('name',$product->name) }}" class="form-control" id="name" name="name">
                 </div>
                 <div class="form-group">
                     <label for="price">Product_price</label>
-                    <input type="text" class="form-control" id="price" name="price">
+                    <input type="text" value="{{ old('price',$product->price) }}" class="form-control" id="price" name="price">
                 </div>
                 <div class="form-group">
                     <label for="amount">Product_amount</label>
-                    <input type="text" class="form-control" id="amount" name="amount">
+                    <input type="text" value="{{ old('amount',$product->amount) }}" class="form-control" id="amount" name="amount">
                 </div>
-                <button type="ADD_to_DB_porduct" class="btn btn-primary">ADD</button>
+                <button type="ADD_to_DB_porduct" class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
