@@ -41,7 +41,7 @@ class productController extends Controller
         //dd($request->all());
         $request->validate([
             'owner' => 'required',
-            'name' => 'required',
+            'name' => ['required','unique:products'],
             'price' => 'required',
             'amount' => 'required',
         ]);
