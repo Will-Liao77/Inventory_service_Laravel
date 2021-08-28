@@ -5,4 +5,4 @@
 Run serve(port8000 LINEBOT占用):php artisan serve --port=8001
 
 
-
+需搭配ngrok使用
