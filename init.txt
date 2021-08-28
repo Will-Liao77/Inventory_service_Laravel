@@ -1,0 +1,6 @@
+更改.css時使用使用:npm rum watch
+
+
+Run serve(port8000 LINEBOT占用):php artisan serve --port=8001
+
+
